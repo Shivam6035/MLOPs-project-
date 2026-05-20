@@ -1,6 +1,7 @@
 
 workflow.txt
 mongoDB_demo.ipynb
+artifacts/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
