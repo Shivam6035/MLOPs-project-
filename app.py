@@ -4,6 +4,7 @@ from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.responses import HTMLResponse, RedirectResponse
+from urllib3 import request
 from uvicorn import run as app_run
 
 from typing import Optional
@@ -73,15 +74,31 @@ class DataForm:
         self.Vehicle_Damage_Yes = form.get("Vehicle_Damage_Yes")
 
 # Route to render the main page with the form
+# @app.get("/", tags=["authentication"])
+# async def index(request: Request):
+#     """
+#     Renders the main HTML form page for vehicle data input.
+#     """
+#     return templates.TemplateResponse(
+#         name="vehicledata.html", 
+#         context={"request": request, "context": "Rendering"})
+
+
+# Route to render the main page with the form
 @app.get("/", tags=["authentication"])
 async def index(request: Request):
     """
     Renders the main HTML form page for vehicle data input.
     """
+    # FIX: Passed strictly as positional arguments: request, name, context
     return templates.TemplateResponse(
-        name="vehicledata.html", 
-        context={"request": request, "context": "Rendering"})
+        request, 
+        "vehicledata.html", 
+        {"request": request, "context": "Rendering"}
+    )
 
+
+# templates.TemplateResponse(request, "vehicledata.html", Rendering)
 
 
 # Route to trigger the model training process
