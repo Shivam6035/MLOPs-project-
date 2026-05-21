@@ -82,9 +82,9 @@ jobs:
       - name: Stop and remove old container
         run: |
 
-          docker ps -q --filter "publish=5000" | xargs -r docker stop
+          docker stop vehicle-insurance-app || true
 
-          docker ps -aq --filter "publish=5000" | xargs -r docker rm
+          docker rm vehicle-insurance-app || true
 
       - name: Remove dangling images
         run: |
@@ -102,3 +102,4 @@ jobs:
           -e MONGODB_URL="${{ secrets.MONGODB_URL }}" \
           -p 5000:5000 \
           "${{ steps.login-ecr.outputs.registry }}"/"${{ secrets.ECR_REPO }}":latest
+
