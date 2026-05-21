@@ -85,16 +85,27 @@ class DataForm:
 
 
 # Route to render the main page with the form
-@app.get("/", tags=["authentication"])
+# @app.get("/", tags=["authentication"])
+# async def index(request: Request):
+#     """
+#     Renders the main HTML form page for vehicle data input.
+#     """
+#     # FIX: Passed strictly as positional arguments: request, name, context
+#     return templates.TemplateResponse(
+#         request, 
+#         "vehicledata.html", 
+#         {"request": request, "context": "Rendering"}
+#     )
+
+@app.get("/")
 async def index(request: Request):
-    """
-    Renders the main HTML form page for vehicle data input.
-    """
-    # FIX: Passed strictly as positional arguments: request, name, context
+
     return templates.TemplateResponse(
-        request, 
-        "vehicledata.html", 
-        {"request": request, "context": "Rendering"}
+        request=request,
+        name="vehicledata.html",
+        context={
+            "context": "Rendering"
+        }
     )
 
 
