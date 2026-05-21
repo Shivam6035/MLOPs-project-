@@ -6,7 +6,7 @@ on:
 
 # Define the region for the whole file here
 env:
-  AWS_REGION: us-east-1
+  AWS_DEFAULT_REGION: us-east-1
 
 jobs:
   deploy:
