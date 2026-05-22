@@ -97,17 +97,14 @@ class DataForm:
 #         {"request": request, "context": "Rendering"}
 #     )
 
+templates = Jinja2Templates(directory="templates")
+
 @app.get("/")
-async def index(request: Request):
-
+async def home(request: Request):
     return templates.TemplateResponse(
-        request=request,
-        name="vehicledata.html",
-        context={
-            "context": "Rendering"
-        }
+        "vehicledata.html",
+        {"request": request}
     )
-
 
 # templates.TemplateResponse(request, "vehicledata.html", Rendering)
 
