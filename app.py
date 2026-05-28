@@ -84,18 +84,6 @@ class DataForm:
 #         context={"request": request, "context": "Rendering"})
 
 
-# Route to render the main page with the form
-# @app.get("/", tags=["authentication"])
-# async def index(request: Request):
-#     """
-#     Renders the main HTML form page for vehicle data input.
-#     """
-#     # FIX: Passed strictly as positional arguments: request, name, context
-#     return templates.TemplateResponse(
-#         request, 
-#         "vehicledata.html", 
-#         {"request": request, "context": "Rendering"}
-#     )
 
 templates = Jinja2Templates(directory="templates")
 
